@@ -1,13 +1,14 @@
-import './assets/main.css'
-import 'virtual:uno.css'
+import './assets/main.css';
+import 'virtual:uno.css';
+import 'element-plus/dist/index.css';
 
-import {createApp} from 'vue'
+import {createApp} from 'vue';
 import {store} from "@/stores";
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
-import mitt from 'mitt'
+import mitt from 'mitt';
 
 const mittImpl = mitt()
 const app = createApp(App)

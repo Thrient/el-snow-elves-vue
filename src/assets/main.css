@@ -1,8 +1,13 @@
 @import './base.css';
 
+html, body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
 #app {
-  display: flex;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }

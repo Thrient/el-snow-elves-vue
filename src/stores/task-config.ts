@@ -14,7 +14,7 @@ export interface TaskConfigStateInterface {
     chivalryShoutCount: number
 }
 
-export const useTaskConfig = defineStore('taskConfigBreadcrumb', {
+export const useTaskConfig = defineStore('taskConfigStore', {
     state: (): TaskConfigStateInterface => ({
         executeList: [],
         chivalryNameOrNumber: '',

@@ -15,7 +15,7 @@ interface ScriptDataStateInterface {
 }
 
 
-export const useScriptData = defineStore('scriptData', {
+export const useScriptData = defineStore('scriptDataStore', {
     state: (): ScriptDataStateInterface => ({
         characterTables: [],
         logsList: []

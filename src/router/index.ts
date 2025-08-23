@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import {useSysConfig} from "@/stores/sys-config.ts";
 
 
 const router = createRouter({
@@ -34,6 +35,14 @@ const router = createRouter({
         }
 
     ],
+})
+
+router.beforeEach(async (to, from) => {
+    const sysConfigStore = useSysConfig()
+    if (!sysConfigStore.getIsInit) {
+        await sysConfigStore.init()
+    }
+    return true
 })
 
 export default router
