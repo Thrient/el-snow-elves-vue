@@ -8,14 +8,16 @@
 <template>
   <el-button type="primary">导入配置</el-button>
   <el-button @click="showDialog" type="success">保存配置</el-button>
-  <el-select class="p-x-10px" style="width: 180px">
+
+  <el-select @change="getTaskConfiguration" v-model="sysConfigStore.currentConfiguration" style="width: 180px">
     <el-option
-        v-for="item in configurationList"
-        :key="item"
-    >
-      {{ item }}
-    </el-option>
+        v-for="(item, index) in configurationList"
+        :key="index"
+        :label="item"
+        :value="item"
+    />
   </el-select>
+
   <el-button type="danger">删除配置</el-button>
   <el-button type="warning">导出配置</el-button>
 
@@ -27,7 +29,14 @@
 import useConfigSetting from "@/views/script/components/header/components/config-setting/useConfigSetting.ts";
 import SelectDialog from "@/components/select-dialog/SelectDialog.vue";
 
-const {dialogVisible, configurationList, saveConfig, showDialog} = useConfigSetting()
+const {
+  dialogVisible,
+  configurationList,
+  sysConfigStore,
+  getTaskConfiguration,
+  saveConfig,
+  showDialog
+} = useConfigSetting()
 </script>
 
 <style scoped>

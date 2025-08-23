@@ -30,6 +30,11 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         }
     },
     actions: {
+        async loadTaskConfig(dict: any) {
+            this.executeList = dict.executeList
+            this.chivalryNameOrNumber = dict.chivalryNameOrNumber
+            this.chivalryShoutCount = dict.chivalryShoutCount
+        },
         async addExecuteList(task: executeList) {
             this.executeList.push(task)
         },

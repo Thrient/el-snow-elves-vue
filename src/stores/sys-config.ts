@@ -6,35 +6,51 @@
  * @LastEditTime: 2025/8/23 13:14
  */
 import {defineStore} from "pinia";
+import {useTaskConfig} from "@/stores/task-config.ts";
 
 export interface SysConfigStateInterface {
-    configurationList: string[],
+    currentConfiguration: string
     isInit: boolean,
 }
 
 export const useSysConfig = defineStore('sysConfigStore', {
     state: (): SysConfigStateInterface => ({
-        configurationList: []
+        currentConfiguration: '',
+        isInit: false
     }),
     getters: {
+        getSysConfig(state): SysConfigStateInterface {
+            return {
+                currentConfiguration: state.currentConfiguration,
+            }
+        },
         getIsInit(state): boolean {
             return state.isInit
         },
-        getConfigurationList(state): string[] {
-            return state.configurationList
-        }
     },
     actions: {
         async init() {
-            const result = await window.pywebview.api.emit('API:CONFIG:LIST')
-            await this.setConfigurationList(result)
+            console.log('init')
+            const taskConfigStore = useTaskConfig()
+
+            const taskConfigList = await window.pywebview.api.emit('API:CONFIG:LIST')
+            if (!taskConfigList.includes(this.currentConfiguration)) {
+                this.currentConfiguration = taskConfigList[0]
+            }
+
+            await taskConfigStore.loadTaskConfig(await window.pywebview.api.emit('API:TASK:CONFIG:lOAD', this.currentConfiguration))
+
             this.isInit = true
-        },
-        async setConfigurationList(configurationList: string[]) {
-            this.configurationList = configurationList
         }
     },
-    persist: {
-        storage: sessionStorage,
-    }
+    persist: [
+        {
+            pick: ['currentConfiguration'],
+            storage: localStorage,
+        },
+        {
+            pick: ['isInit'],
+            storage: sessionStorage,
+        }
+    ]
 })
