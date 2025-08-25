@@ -46,6 +46,10 @@ export default function () {
             data: '每日兑换',
             card: '/script/daily-redemption-task-card'
         },
+        {
+            data: '江湖急送',
+            card: ''
+        },
 
     ])
 

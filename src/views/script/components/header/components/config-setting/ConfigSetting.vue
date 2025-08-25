@@ -49,7 +49,6 @@ const {
   getTaskConfiguration,
   saveConfig,
   deleteConfig,
-  showDialog
 } = useConfigSetting()
 </script>
 
