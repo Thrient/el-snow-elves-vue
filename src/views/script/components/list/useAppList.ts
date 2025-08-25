@@ -42,6 +42,10 @@ export default function () {
             data: '侠缘喊话',
             card: '/script/chivalry-task-card'
         },
+        {
+            data: '每日兑换',
+            card: '/script/daily-redemption-task-card'
+        },
 
     ])
 

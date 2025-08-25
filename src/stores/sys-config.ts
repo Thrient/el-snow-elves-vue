@@ -25,7 +25,7 @@ export const useSysConfig = defineStore('sysConfigStore', {
     },
     actions: {
         async init() {
-            if (window.pywebview.api === undefined) {
+            if (window.pywebview?.api === undefined) {
                 return
             }
             await this.updateCurrentConfiguration()

@@ -24,6 +24,11 @@ const router = createRouter({
                             name: 'chivalry-task-card',
                             component: () => import('@/views/script/components/task-card/chivalry-task-card/ChivalryTaskCard.vue'),
                         },
+                        {
+                            path: 'daily-redemption-task-card',
+                            name: 'daily-redemption-task-card',
+                            component: () => import('@/views/script/components/task-card/daily-redemption-task-card/DailyRedemptionTaskCard.vue'),
+                        },
                     ]
                 },
                 {

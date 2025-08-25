@@ -11,21 +11,30 @@ import {type executeList} from "@/types/task";
 export interface TaskConfigStateInterface {
     executeList: executeList[],
     chivalryNameOrNumber: string,
-    chivalryShoutCount: number
+    chivalryShoutCount: number,
+    silverNoteGiftBox: boolean,
+    wuYueSwordBlank: boolean,
+    baiGongDingBlank: boolean
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
     state: (): TaskConfigStateInterface => ({
         executeList: [],
         chivalryNameOrNumber: '',
-        chivalryShoutCount: 1
+        chivalryShoutCount: 1,
+        silverNoteGiftBox: false,
+        wuYueSwordBlank: false,
+        baiGongDingBlank: false
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
             return {
                 executeList: state.executeList,
                 chivalryNameOrNumber: state.chivalryNameOrNumber,
-                chivalryShoutCount: state.chivalryShoutCount
+                chivalryShoutCount: state.chivalryShoutCount,
+                silverNoteGiftBox: state.silverNoteGiftBox,
+                wuYueSwordBlank: state.wuYueSwordBlank,
+                baiGongDingBlank: state.baiGongDingBlank
             }
         }
     },
@@ -34,6 +43,9 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.executeList = dict.executeList
             this.chivalryNameOrNumber = dict.chivalryNameOrNumber
             this.chivalryShoutCount = dict.chivalryShoutCount
+            this.silverNoteGiftBox = dict.silverNoteGiftBox
+            this.wuYueSwordBlank = dict.wuYueSwordBlank
+            this.baiGongDingBlank = dict.baiGongDingBlank
         },
         async addExecuteList(task: executeList) {
             this.executeList.push(task)
