@@ -15,7 +15,9 @@ export default function () {
 
     const taskConfigStore = useTaskConfig()
 
-    const dialogVisible = ref(false)
+    const saveDialogVisible = ref(false)
+
+    const deleteDialogVisible = ref(false)
 
     const configurationList = ref([])
 
@@ -28,7 +30,7 @@ export default function () {
      * @returns {Promise<void>} 无返回值的异步函数
      */
     const getConfigurationList = async () => {
-        configurationList.value = await window.pywebview.api.emit('API:CONFIG:LIST')
+        configurationList.value = await window.pywebview.api.emit('API:TASK:CONFIG:LIST')
     }
 
     /**
@@ -51,17 +53,16 @@ export default function () {
      */
     const saveConfig = async (value: string) => {
         // 向Python后端发送配置保存事件，传递配置值和任务配置信息
-        window.pywebview.api.emit('API:CONFIG:SAVE', value, taskConfigStore.getTaskConfig)
+        window.pywebview.api.emit('API:TASK:CONFIG:SAVE', value, taskConfigStore.getTaskConfig)
+        await getConfigurationList()
+        await sysConfigStore.updateCurrentConfiguration()
     }
 
-
-    /**
-     * 显示对话框
-     *
-     * @returns 无返回值
-     */
-    const showDialog = async () => {
-        dialogVisible.value = true
+    const deleteConfig = async (value: string) => {
+        // 向Python后端发送配置删除事件，传递配置值
+        window.pywebview.api.emit('API:TASK:CONFIG:DELETE', value)
+        await getConfigurationList()
+        await sysConfigStore.updateCurrentConfiguration()
     }
 
 
@@ -79,12 +80,13 @@ export default function () {
 
 
     return {
-        dialogVisible,
+        saveDialogVisible,
+        deleteDialogVisible,
         configurationList,
         sysConfigStore,
         getTaskConfiguration,
         saveConfig,
-        showDialog
+        deleteConfig
     }
 
 

@@ -7,7 +7,7 @@
 -->
 <template>
   <el-button type="primary">导入配置</el-button>
-  <el-button @click="showDialog" type="success">保存配置</el-button>
+  <el-button @click="saveDialogVisible = true" type="success">保存配置</el-button>
 
   <el-select @change="getTaskConfiguration" v-model="sysConfigStore.currentConfiguration" style="width: 180px">
     <el-option
@@ -18,10 +18,22 @@
     />
   </el-select>
 
-  <el-button type="danger">删除配置</el-button>
+  <el-button @click="deleteDialogVisible = true" type="danger">删除配置</el-button>
   <el-button type="warning">导出配置</el-button>
 
-  <SelectDialog v-model="dialogVisible" :options="ops" title="保存配置文件" @confirm="saveConfig"/>
+
+  <SelectDialog
+      v-model="saveDialogVisible"
+      :options="configurationList"
+      title="保存配置文件"
+      @confirm="saveConfig"
+  />
+
+  <SelectDialog v-model="deleteDialogVisible"
+                :options="configurationList"
+                title="删除配置文件"
+                @confirm="deleteConfig"
+  />
 
 </template>
 
@@ -30,11 +42,13 @@ import useConfigSetting from "@/views/script/components/header/components/config
 import SelectDialog from "@/components/select-dialog/SelectDialog.vue";
 
 const {
-  dialogVisible,
+  saveDialogVisible,
+  deleteDialogVisible,
   configurationList,
   sysConfigStore,
   getTaskConfiguration,
   saveConfig,
+  deleteConfig,
   showDialog
 } = useConfigSetting()
 </script>

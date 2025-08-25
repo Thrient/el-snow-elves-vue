@@ -19,28 +19,27 @@ export const useSysConfig = defineStore('sysConfigStore', {
         isInit: false
     }),
     getters: {
-        getSysConfig(state): SysConfigStateInterface {
-            return {
-                currentConfiguration: state.currentConfiguration,
-            }
-        },
         getIsInit(state): boolean {
             return state.isInit
         },
     },
     actions: {
         async init() {
-            console.log('init')
+            if (window.pywebview.api === undefined) {
+                return
+            }
+            await this.updateCurrentConfiguration()
+
+            this.isInit = true
+        },
+        async updateCurrentConfiguration() {
             const taskConfigStore = useTaskConfig()
 
-            const taskConfigList = await window.pywebview.api.emit('API:CONFIG:LIST')
+            const taskConfigList = await window.pywebview.api.emit('API:TASK:CONFIG:LIST')
             if (!taskConfigList.includes(this.currentConfiguration)) {
                 this.currentConfiguration = taskConfigList[0]
             }
-
             await taskConfigStore.loadTaskConfig(await window.pywebview.api.emit('API:TASK:CONFIG:lOAD', this.currentConfiguration))
-
-            this.isInit = true
         }
     },
     persist: [
