@@ -29,12 +29,22 @@ const router = createRouter({
                             name: 'daily-redemption-task-card',
                             component: () => import('@/views/script/components/task-card/daily-redemption-task-card/DailyRedemptionTaskCard.vue'),
                         },
+                        {
+                            path: 'world-shouts-task-card',
+                            name: 'world-shouts-task-card',
+                            component: () => import('@/views/script/components/task-card/world-shouts-task-card/WorldShoutsTaskCard.vue'),
+                        },
                     ]
                 },
                 {
                     path: '/run',
                     name: 'run',
                     component: () => import('@/views/run/AppRun.vue'),
+                },
+                {
+                    path: '/setting',
+                    name: 'setting',
+                    component: () => import('@/views/setting/AppSetting.vue'),
                 }
             ]
         }

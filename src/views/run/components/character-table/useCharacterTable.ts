@@ -10,7 +10,7 @@ import {
     type ComponentInternalInstance,
     computed,
     getCurrentInstance,
-    onBeforeUnmount,
+    onUnmounted,
     onMounted,
     ref
 } from 'vue';
@@ -108,13 +108,15 @@ export default function () {
 
 
     onMounted(() => {
+        console.log('useCharacterTable mounted')
         updateHeight()
         window.addEventListener('resize', updateHeight)
         appContext.config.globalProperties.$mitt.on('API:UPDATE:CHARACTER', updateCharacter)
         appContext.config.globalProperties.$mitt.on('API:ADD:CHARACTER', addCharacter)
     })
 
-    onBeforeUnmount(() => {
+    onUnmounted(() => {
+        console.log('useCharacterTable unmounted')
         window.removeEventListener('resize', updateHeight)
         appContext.config.globalProperties.$mitt.off('API:UPDATE:CHARACTER', updateCharacter)
         appContext.config.globalProperties.$mitt.off('API:ADD:CHARACTER', addCharacter)

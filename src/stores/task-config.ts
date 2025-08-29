@@ -14,7 +14,10 @@ export interface TaskConfigStateInterface {
     chivalryShoutCount: number,
     silverNoteGiftBox: boolean,
     wuYueSwordBlank: boolean,
-    baiGongDingBlank: boolean
+    baiGongDingBlank: boolean,
+    ordinaryWorldShouts: boolean,
+    connectedWorldShouts: boolean,
+    worldShoutsText: string
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -24,7 +27,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         chivalryShoutCount: 1,
         silverNoteGiftBox: false,
         wuYueSwordBlank: false,
-        baiGongDingBlank: false
+        baiGongDingBlank: false,
+        ordinaryWorldShouts: false,
+        connectedWorldShouts: false,
+        worldShoutsText: ''
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -34,7 +40,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 chivalryShoutCount: state.chivalryShoutCount,
                 silverNoteGiftBox: state.silverNoteGiftBox,
                 wuYueSwordBlank: state.wuYueSwordBlank,
-                baiGongDingBlank: state.baiGongDingBlank
+                baiGongDingBlank: state.baiGongDingBlank,
+                ordinaryWorldShouts: state.ordinaryWorldShouts,
+                connectedWorldShouts: state.connectedWorldShouts,
+                worldShoutsText: state.worldShoutsText
             }
         }
     },
@@ -46,6 +55,9 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.silverNoteGiftBox = dict.silverNoteGiftBox
             this.wuYueSwordBlank = dict.wuYueSwordBlank
             this.baiGongDingBlank = dict.baiGongDingBlank
+            this.ordinaryWorldShouts = dict.ordinaryWorldShouts
+            this.connectedWorldShouts = dict.connectedWorldShouts
+            this.worldShoutsText = dict.worldShoutsText
         },
         async addExecuteList(task: executeList) {
             this.executeList.push(task)

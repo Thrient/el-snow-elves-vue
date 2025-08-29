@@ -14,6 +14,7 @@
       <el-menu-item index="/home">主页</el-menu-item>
       <el-menu-item index="/script">脚本</el-menu-item>
       <el-menu-item index="/run">运行</el-menu-item>
+      <el-menu-item index="/setting">设置</el-menu-item>
     </el-menu-item-group>
   </el-menu>
 </template>

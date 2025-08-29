@@ -50,6 +50,14 @@ export default function () {
             data: '江湖急送',
             card: ''
         },
+        {
+            data: '日常副本',
+            card: ''
+        },
+        {
+            data: '世界喊话',
+            card: '/script/world-shouts-task-card'
+        },
 
     ])
 
