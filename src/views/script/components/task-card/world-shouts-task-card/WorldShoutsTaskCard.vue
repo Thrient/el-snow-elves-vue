@@ -28,12 +28,17 @@
     <el-row class="mb-4" :gutter="5">
       <el-col :span="24">
         <el-container class="flex gap-x-xs">
-          <el-input
-              v-model="taskConfigStore.worldShoutsText"
-              :autosize="{ minRows: 4, maxRows: 6 }"
-              type="textarea"
-              placeholder="世界喊话内容"
-          />
+          <el-tooltip
+              content="脚本将逐行并按文本顺序执行喊话"
+              placement="top-start"
+          >
+            <el-input
+                v-model="taskConfigStore.worldShoutsText"
+                :autosize="{ minRows: 4, maxRows: 6 }"
+                type="textarea"
+                placeholder="世界喊话内容"
+            />
+          </el-tooltip>
         </el-container>
       </el-col>
 

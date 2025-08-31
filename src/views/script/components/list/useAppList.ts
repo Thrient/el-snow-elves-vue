@@ -58,6 +58,14 @@ export default function () {
             data: '世界喊话',
             card: '/script/world-shouts-task-card'
         },
+        {
+            data: '每日一卦',
+            card: ''
+        },
+        {
+            data: '茶馆说书',
+            card: ''
+        },
 
     ])
 
