@@ -17,7 +17,8 @@ export interface TaskConfigStateInterface {
     baiGongDingBlank: boolean,
     ordinaryWorldShouts: boolean,
     connectedWorldShouts: boolean,
-    worldShoutsText: string
+    worldShoutsText: string,
+    keyList: string[]
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -30,7 +31,8 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         baiGongDingBlank: false,
         ordinaryWorldShouts: false,
         connectedWorldShouts: false,
-        worldShoutsText: ''
+        worldShoutsText: '',
+        keyList: []
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -43,7 +45,8 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 baiGongDingBlank: state.baiGongDingBlank,
                 ordinaryWorldShouts: state.ordinaryWorldShouts,
                 connectedWorldShouts: state.connectedWorldShouts,
-                worldShoutsText: state.worldShoutsText
+                worldShoutsText: state.worldShoutsText,
+                keyList: state.keyList
             }
         }
     },
@@ -58,6 +61,7 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.ordinaryWorldShouts = dict.ordinaryWorldShouts
             this.connectedWorldShouts = dict.connectedWorldShouts
             this.worldShoutsText = dict.worldShoutsText
+            this.keyList = dict.keyList
         },
         async addExecuteList(task: executeList) {
             this.executeList.push(task)

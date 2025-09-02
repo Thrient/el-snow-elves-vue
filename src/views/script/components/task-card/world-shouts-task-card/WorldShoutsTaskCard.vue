@@ -31,6 +31,7 @@
           <el-tooltip
               content="脚本将逐行并按文本顺序执行喊话"
               placement="top-start"
+              :trigger-keys="[]"
           >
             <el-input
                 v-model="taskConfigStore.worldShoutsText"
