@@ -29,7 +29,28 @@
       </el-table-column>
       <el-table-column fixed="right" min-width="280" label="操作">
         <template #header>
-          <el-button @click="start" size="small" type="success">开始</el-button>
+          <el-popover
+              placement="right-start"
+              :width="300"
+              trigger="hover"
+          >
+            <template #reference>
+              <el-button @click="start" size="small" type="success">开始</el-button>
+            </template>
+            <template #default>
+              <div>
+                <el-divider content-position="center">切换角色</el-divider>
+                <el-checkbox-group v-model="taskConfigStore.switchCharacterList">
+                  <el-checkbox label="角色1" value="characterOne"/>
+                  <el-checkbox label="角色2" value="characterTwo"/>
+                  <el-checkbox label="角色3" value="characterThree"/>
+                  <el-checkbox label="角色4" value="characterFour"/>
+                  <el-checkbox label="角色5" value="characterFive"/>
+                </el-checkbox-group>
+              </div>
+
+            </template>
+          </el-popover>
         </template>
         <template #default="scope">
           <el-button @click="stop(scope.row)" size="small">暂停</el-button>
@@ -46,7 +67,17 @@
 <script setup lang="ts">
 import useCharacterTable from "@/views/run/components/character-table/useCharacterTable.ts";
 
-const {characterTables, tableRef, tableHeight, start, unbind, stop, resume, screenshot} = useCharacterTable()
+const {
+  characterTables,
+  tableRef,
+  tableHeight,
+  taskConfigStore,
+  start,
+  unbind,
+  stop,
+  resume,
+  screenshot
+} = useCharacterTable()
 
 </script>
 

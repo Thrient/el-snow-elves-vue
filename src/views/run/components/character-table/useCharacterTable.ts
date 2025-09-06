@@ -126,6 +126,7 @@ export default function () {
         characterTables,
         tableRef,
         tableHeight,
+        taskConfigStore,
         start,
         unbind,
         stop,

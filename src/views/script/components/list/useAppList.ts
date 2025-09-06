@@ -66,6 +66,10 @@ export default function () {
             data: '茶馆说书',
             card: ''
         },
+        {
+            data: '江湖行商',
+            card: ''
+        },
 
     ])
 

@@ -18,7 +18,8 @@ export interface TaskConfigStateInterface {
     ordinaryWorldShouts: boolean,
     connectedWorldShouts: boolean,
     worldShoutsText: string,
-    keyList: string[]
+    keyList: string[],
+    switchCharacterList: boolean[]
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -32,7 +33,8 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         ordinaryWorldShouts: false,
         connectedWorldShouts: false,
         worldShoutsText: '',
-        keyList: []
+        keyList: [],
+        switchCharacterList: []
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -46,7 +48,8 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 ordinaryWorldShouts: state.ordinaryWorldShouts,
                 connectedWorldShouts: state.connectedWorldShouts,
                 worldShoutsText: state.worldShoutsText,
-                keyList: state.keyList
+                keyList: state.keyList,
+                switchCharacterList: state.switchCharacterList
             }
         }
     },
@@ -62,6 +65,7 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.connectedWorldShouts = dict.connectedWorldShouts
             this.worldShoutsText = dict.worldShoutsText
             this.keyList = dict.keyList
+            this.switchCharacterList = dict.switchCharacterList
         },
         async addExecuteList(task: executeList) {
             this.executeList.push(task)

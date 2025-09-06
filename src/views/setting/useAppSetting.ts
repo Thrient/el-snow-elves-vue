@@ -13,7 +13,10 @@ export default function () {
 
     const handleKeydown = (e: any, index: number) => {
         e.preventDefault()
-        taskConfigStore.keyList[index] = e.code.replace('Key', '').toUpperCase()
+        taskConfigStore.keyList[index] = e.code
+            .replace(/^Key/, '')
+            .replace(/^Digit/, '')
+            .toUpperCase()
     }
 
     return {
