@@ -34,6 +34,11 @@ const router = createRouter({
                             name: 'world-shouts-task-card',
                             component: () => import('@/views/script/components/task-card/world-shouts-task-card/WorldShoutsTaskCard.vue'),
                         },
+                        {
+                            path: 'hero-list-task-card',
+                            name: 'hero-list-task-card',
+                            component: () => import('@/views/script/components/task-card/hero-list-task-card/HeroListTaskCard.vue'),
+                        },
                     ]
                 },
                 {

@@ -7,7 +7,8 @@
 -->
 <template>
   <div class="flex gap-4 h-100%" ref="listRef">
-    <el-table @cell-dblclick="add" highlight-current-row :data="tableData" style="width: 100px" :height="tableHeight">
+    <el-table class="taskListTable" row-key="data" @cell-dblclick="add" highlight-current-row :data="tableData"
+              style="width: 100px" :height="tableHeight">
       <template #empty>
         <span>无任务</span>
       </template>
@@ -21,7 +22,9 @@
       </el-table-column>
     </el-table>
 
-    <el-table @cell-dblclick="remove" highlight-current-row :data="taskConfigStore.$state.executeList"
+    <el-table class="executeListTable" row-key="data" @cell-dblclick="remove"
+              highlight-current-row
+              :data="taskConfigStore.$state.executeList"
               style="width: 100px"
               :height="tableHeight">
       <template #empty>

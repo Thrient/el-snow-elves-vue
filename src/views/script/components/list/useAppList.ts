@@ -8,6 +8,7 @@
 import {ref, onMounted, onBeforeUnmount} from "vue";
 import {useTaskConfig} from "@/stores/task-config.ts";
 import router from "@/router";
+import Sortable from 'sortablejs'
 
 export default function () {
 
@@ -16,6 +17,44 @@ export default function () {
     const taskConfigStore = useTaskConfig()
 
     const tableHeight = ref(0)
+
+    const initSort = () => {
+        const executeTable = document.querySelector(".executeListTable .el-table__body-wrapper tbody") as HTMLElement | null
+        const taskTable = document.querySelector(".taskListTable .el-table__body-wrapper tbody") as HTMLElement | null
+        if (!executeTable || !taskTable) return
+        Sortable.create(executeTable, {
+            group: {
+                name: 'shared',
+                pull: true,
+                put: true
+            },
+            sort: true,
+            async onEnd(event: any) {
+                const {oldIndex, newIndex} = event
+                // 直接使用oldIndex和newIndex操作数组
+                const [movedItem] = taskConfigStore.executeList.splice(oldIndex, 1)
+                await taskConfigStore.addExecuteList(movedItem, newIndex)
+            },
+            async onAdd(event: any) {
+                event.item.remove()
+                const {oldIndex, newIndex} = event
+                // 直接使用oldIndex和newIndex操作数组
+                const data = tableData.value[oldIndex]
+                await taskConfigStore.addExecuteList(data, newIndex)
+            },
+
+        })
+
+        Sortable.create(taskTable, {
+            group: {
+                name: 'shared',
+                pull: 'clone',
+                put: false
+            },
+            sort: false,
+        })
+
+    }
 
     const tableData = ref([
         {
@@ -70,6 +109,10 @@ export default function () {
             data: '江湖行商',
             card: ''
         },
+        {
+            data: '江湖英雄榜',
+            card: '/script/hero-list-task-card'
+        },
 
     ])
 
@@ -92,7 +135,7 @@ export default function () {
      * @param row 任务配置数据行
      */
     const add = async (row: any) => {
-        await taskConfigStore.addExecuteList(row)
+        await taskConfigStore.addExecuteList(row, taskConfigStore.executeList.length)
     }
 
 
@@ -127,6 +170,7 @@ export default function () {
 
     onMounted(() => {
         updateHeight()
+        initSort()
         window.addEventListener('resize', updateHeight)
 
     })

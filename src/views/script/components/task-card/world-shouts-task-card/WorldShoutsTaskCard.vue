@@ -8,17 +8,24 @@
 <template>
   <el-card class="w-100% " shadow="hover">
     <el-row class="mb-4" :gutter="5">
-      <el-col :span="12">
+      <el-col :span="8">
         <el-container class="flex gap-x-xs">
           <el-text line-clamp="1" type="primary">普通世界喊话:</el-text>
           <el-switch v-model="taskConfigStore.ordinaryWorldShouts"/>
         </el-container>
       </el-col>
 
-      <el-col :span="12">
+      <el-col :span="8">
         <el-container class="flex gap-x-xs">
           <el-text line-clamp="1" type="primary">互联世界喊话:</el-text>
           <el-switch v-model="taskConfigStore.connectedWorldShouts"/>
+        </el-container>
+      </el-col>
+
+      <el-col :span="8">
+        <el-container class="flex gap-x-xs">
+          <el-text line-clamp="1" type="primary">喊话次数:</el-text>
+          <el-input-number v-model="taskConfigStore.$state.worldShoutsCount" :min="1" :max="9999"/>
         </el-container>
       </el-col>
 

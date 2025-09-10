@@ -19,7 +19,10 @@ export interface TaskConfigStateInterface {
     connectedWorldShouts: boolean,
     worldShoutsText: string,
     keyList: string[],
-    switchCharacterList: boolean[]
+    switchCharacterList: boolean[],
+    worldShoutsCount: number,
+    heroListCount: number,
+    heroListInitiativeExit: boolean
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -34,7 +37,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         connectedWorldShouts: false,
         worldShoutsText: '',
         keyList: [],
-        switchCharacterList: []
+        switchCharacterList: [],
+        worldShoutsCount: 1,
+        heroListCount: 1,
+        heroListInitiativeExit: false
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -49,7 +55,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 connectedWorldShouts: state.connectedWorldShouts,
                 worldShoutsText: state.worldShoutsText,
                 keyList: state.keyList,
-                switchCharacterList: state.switchCharacterList
+                switchCharacterList: state.switchCharacterList,
+                worldShoutsCount: state.worldShoutsCount,
+                heroListCount: state.heroListCount,
+                heroListInitiativeExit: state.heroListInitiativeExit
             }
         }
     },
@@ -66,9 +75,20 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.worldShoutsText = dict.worldShoutsText
             this.keyList = dict.keyList
             this.switchCharacterList = dict.switchCharacterList
+            this.worldShoutsCount = dict.worldShoutsCount
+            this.heroListCount = dict.heroListCount
+            this.heroListInitiativeExit = dict.heroListInitiativeExit
         },
-        async addExecuteList(task: executeList) {
-            this.executeList.push(task)
+        async addExecuteList(task: executeList, index: number) {
+            const isDuplicate = this.executeList.some(item => {
+                // 根据实际情况定义"相同"的判断逻辑
+                // 这里假设通过task的id属性判断是否相同
+                return item.data === task.data
+            });
+
+            if (!isDuplicate) {
+                this.executeList.splice(index, 0, task)
+            }
         },
         async removeExecuteList(task: executeList) {
             this.executeList = this.executeList.filter(item => item.data !== task.data)

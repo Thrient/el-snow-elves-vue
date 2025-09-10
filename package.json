@@ -11,10 +11,12 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@types/sortablejs": "^1.15.8",
     "element-plus": "^2.10.3",
     "mitt": "^3.0.1",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.4.1",
+    "sortablejs": "^1.15.6",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
