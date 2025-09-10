@@ -12,9 +12,6 @@ export interface TaskConfigStateInterface {
     executeList: executeList[],
     chivalryNameOrNumber: string,
     chivalryShoutCount: number,
-    silverNoteGiftBox: boolean,
-    wuYueSwordBlank: boolean,
-    baiGongDingBlank: boolean,
     ordinaryWorldShouts: boolean,
     connectedWorldShouts: boolean,
     worldShoutsText: string,
@@ -22,7 +19,11 @@ export interface TaskConfigStateInterface {
     switchCharacterList: boolean[],
     worldShoutsCount: number,
     heroListCount: number,
-    heroListInitiativeExit: boolean
+    heroListInitiativeExit: boolean,
+    dailyExchangeList: string[],
+    moneyTreeSelect: string,
+    chefIngredientsTags: string[]
+    chefSeasoningTags: string[]
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -30,9 +31,6 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         executeList: [],
         chivalryNameOrNumber: '',
         chivalryShoutCount: 1,
-        silverNoteGiftBox: false,
-        wuYueSwordBlank: false,
-        baiGongDingBlank: false,
         ordinaryWorldShouts: false,
         connectedWorldShouts: false,
         worldShoutsText: '',
@@ -40,7 +38,11 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         switchCharacterList: [],
         worldShoutsCount: 1,
         heroListCount: 1,
-        heroListInitiativeExit: false
+        heroListInitiativeExit: false,
+        dailyExchangeList: [],
+        moneyTreeSelect: '',
+        chefIngredientsTags: [],
+        chefSeasoningTags: []
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -48,9 +50,6 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 executeList: state.executeList,
                 chivalryNameOrNumber: state.chivalryNameOrNumber,
                 chivalryShoutCount: state.chivalryShoutCount,
-                silverNoteGiftBox: state.silverNoteGiftBox,
-                wuYueSwordBlank: state.wuYueSwordBlank,
-                baiGongDingBlank: state.baiGongDingBlank,
                 ordinaryWorldShouts: state.ordinaryWorldShouts,
                 connectedWorldShouts: state.connectedWorldShouts,
                 worldShoutsText: state.worldShoutsText,
@@ -58,7 +57,11 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 switchCharacterList: state.switchCharacterList,
                 worldShoutsCount: state.worldShoutsCount,
                 heroListCount: state.heroListCount,
-                heroListInitiativeExit: state.heroListInitiativeExit
+                heroListInitiativeExit: state.heroListInitiativeExit,
+                dailyExchangeList: state.dailyExchangeList,
+                moneyTreeSelect: state.moneyTreeSelect,
+                chefIngredientsTags: state.chefIngredientsTags,
+                chefSeasoningTags: state.chefSeasoningTags
             }
         }
     },
@@ -67,9 +70,6 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.executeList = dict.executeList
             this.chivalryNameOrNumber = dict.chivalryNameOrNumber
             this.chivalryShoutCount = dict.chivalryShoutCount
-            this.silverNoteGiftBox = dict.silverNoteGiftBox
-            this.wuYueSwordBlank = dict.wuYueSwordBlank
-            this.baiGongDingBlank = dict.baiGongDingBlank
             this.ordinaryWorldShouts = dict.ordinaryWorldShouts
             this.connectedWorldShouts = dict.connectedWorldShouts
             this.worldShoutsText = dict.worldShoutsText
@@ -78,6 +78,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.worldShoutsCount = dict.worldShoutsCount
             this.heroListCount = dict.heroListCount
             this.heroListInitiativeExit = dict.heroListInitiativeExit
+            this.dailyExchangeList = dict.dailyExchangeList
+            this.moneyTreeSelect = dict.moneyTreeSelect
+            this.chefIngredientsTags = dict.chefIngredientsTags
+            this.chefSeasoningTags = dict.chefSeasoningTags
         },
         async addExecuteList(task: executeList, index: number) {
             const isDuplicate = this.executeList.some(item => {
