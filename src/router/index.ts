@@ -39,6 +39,11 @@ const router = createRouter({
                             name: 'hero-list-task-card',
                             component: () => import('@/views/script/components/task-card/hero-list-task-card/HeroListTaskCard.vue'),
                         },
+                        {
+                            path: 'acquisition-task-card',
+                            name: 'acquisition-task-card',
+                            component: () => import('@/views/script/components/task-card/acquisition-task-card/AcquisitionTaskCard.vue'),
+                        },
                     ]
                 },
                 {

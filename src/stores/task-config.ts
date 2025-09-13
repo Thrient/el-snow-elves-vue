@@ -24,6 +24,15 @@ export interface TaskConfigStateInterface {
     moneyTreeSelect: string,
     chefIngredientsTags: string[]
     chefSeasoningTags: string[]
+    collectionMode: string
+    collectionSwitch: number
+    collectionCount: number,
+    collectionMap: string,
+    autoEatEgg: boolean,
+    autoEatEggCount: number,
+    autoBuyTool: boolean,
+    collectionArticles: string,
+    customCoordinatesTags: string[]
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -42,7 +51,17 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         dailyExchangeList: [],
         moneyTreeSelect: '',
         chefIngredientsTags: [],
-        chefSeasoningTags: []
+        chefSeasoningTags: [],
+        collectionMode: '',
+        collectionSwitch: 0,
+        collectionCount: 1,
+        collectionMap: '',
+        autoEatEgg: false,
+        autoEatEggCount: 1,
+        autoBuyTool: false,
+        collectionArticles: '',
+        customCoordinatesTags: []
+
     }),
     getters: {
         getTaskConfig(state): TaskConfigStateInterface {
@@ -61,7 +80,16 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 dailyExchangeList: state.dailyExchangeList,
                 moneyTreeSelect: state.moneyTreeSelect,
                 chefIngredientsTags: state.chefIngredientsTags,
-                chefSeasoningTags: state.chefSeasoningTags
+                chefSeasoningTags: state.chefSeasoningTags,
+                collectionMode: state.collectionMode,
+                collectionSwitch: state.collectionSwitch,
+                collectionCount: state.collectionCount,
+                collectionMap: state.collectionMap,
+                autoEatEgg: state.autoEatEgg,
+                autoEatEggCount: state.autoEatEggCount,
+                autoBuyTool: state.autoBuyTool,
+                collectionArticles: state.collectionArticles,
+                customCoordinatesTags: state.customCoordinatesTags
             }
         }
     },
@@ -82,6 +110,15 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.moneyTreeSelect = dict.moneyTreeSelect
             this.chefIngredientsTags = dict.chefIngredientsTags
             this.chefSeasoningTags = dict.chefSeasoningTags
+            this.collectionMode = dict.collectionMode
+            this.collectionSwitch = dict.collectionSwitch
+            this.collectionCount = dict.collectionCount
+            this.collectionMap = dict.collectionMap
+            this.autoEatEgg = dict.autoEatEgg
+            this.autoEatEggCount = dict.autoEatEggCount
+            this.autoBuyTool = dict.autoBuyTool
+            this.collectionArticles = dict.collectionArticles
+            this.customCoordinatesTags = dict.customCoordinatesTags
         },
         async addExecuteList(task: executeList, index: number) {
             const isDuplicate = this.executeList.some(item => {

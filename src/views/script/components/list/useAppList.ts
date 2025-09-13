@@ -113,7 +113,10 @@ export default function () {
             data: '江湖英雄榜',
             card: '/script/hero-list-task-card'
         },
-
+        {
+            data: '采集任务',
+            card: '/script/acquisition-task-card'
+        },
     ])
 
     /**
