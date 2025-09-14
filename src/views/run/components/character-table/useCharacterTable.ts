@@ -68,16 +68,6 @@ export default function () {
     }
 
     /**
-     * 截图函数
-     * @param data - 包含窗口句柄信息的角色表格数据
-     * @returns 无返回值的异步函数
-     */
-    const screenshot = async (data: characterTable) => {
-        // 调用Python Webview API执行截图操作
-        window.pywebview.api.emit('API:SCRIPT:SCREENSHOT', data.hwnd)
-    }
-
-    /**
      * 更新表格高度
      * 根据tableRef元素的实际高度计算并设置表格显示高度，预留10px的间距
      */
@@ -130,8 +120,7 @@ export default function () {
         start,
         unbind,
         stop,
-        resume,
-        screenshot
+        resume
     }
 
 

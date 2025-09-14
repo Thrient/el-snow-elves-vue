@@ -54,13 +54,13 @@
 
         <el-col :span="6">
           <el-container class="flex gap-x-xs">
-            <el-checkbox label="锦芳绣残片" value="锦芳绣残片"/>
+            <el-checkbox label="碧铜马坯" value="碧铜马坯"/>
           </el-container>
         </el-col>
 
         <el-col :span="6">
           <el-container class="flex gap-x-xs">
-            <el-checkbox label="商票上缴" value="商票上缴"/>
+            <el-checkbox label="锦芳绣残片" value="锦芳绣残片"/>
           </el-container>
         </el-col>
 
@@ -91,8 +91,23 @@
           </el-container>
         </el-col>
 
+      </el-row>
+
+      <el-row class="m-b" :gutter="5">
+        <el-col :span="6">
+          <el-container class="flex gap-x-xs">
+            <el-checkbox label="商票上缴" value="商票上缴"/>
+          </el-container>
+        </el-col>
+
+        <el-col :span="6">
+          <el-container class="flex gap-x-xs">
+            <el-checkbox label="发布悬赏" value="发布悬赏"/>
+          </el-container>
+        </el-col>
 
       </el-row>
+
 
       <el-row class="m-b" :gutter="5">
         <el-col :span="24">

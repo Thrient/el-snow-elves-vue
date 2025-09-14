@@ -44,6 +44,16 @@ const router = createRouter({
                             name: 'acquisition-task-card',
                             component: () => import('@/views/script/components/task-card/acquisition-task-card/AcquisitionTaskCard.vue'),
                         },
+                        {
+                            path: 'sword-task-card',
+                            name: 'sword-task-card',
+                            component: () => import('@/views/script/components/task-card/sword-task-card/SwordTaskCard.vue'),
+                        },
+                        {
+                            path: 'merchant-lake-task-card',
+                            name: 'merchant-lake-task-card',
+                            component: () => import('@/views/script/components/task-card/merchant-lake-task-card/MerchantLakeTaskCard.vue'),
+                        },
                     ]
                 },
                 {

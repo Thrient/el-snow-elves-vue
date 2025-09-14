@@ -75,7 +75,7 @@ export default function () {
         },
         {
             data: '单人论剑',
-            card: ''
+            card: '/script/sword-task-card'
         },
         {
             data: '侠缘喊话',
@@ -107,7 +107,7 @@ export default function () {
         },
         {
             data: '江湖行商',
-            card: ''
+            card: '/script/merchant-lake-task-card'
         },
         {
             data: '江湖英雄榜',
@@ -116,6 +116,10 @@ export default function () {
         {
             data: '采集任务',
             card: '/script/acquisition-task-card'
+        },
+        {
+            data: '坐观万象',
+            card: ''
         },
     ])
 

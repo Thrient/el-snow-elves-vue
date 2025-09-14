@@ -56,7 +56,7 @@
           <el-button @click="stop(scope.row)" size="small">暂停</el-button>
           <el-button @click="resume(scope.row)" size="small">恢复</el-button>
           <el-button @click="unbind(scope.row)" size="small">解绑</el-button>
-          <el-button @click="screenshot(scope.row)" size="small">截图</el-button>
+          <OtherOperations :data="scope.row" />
         </template>
       </el-table-column>
     </el-table>
@@ -66,6 +66,7 @@
 
 <script setup lang="ts">
 import useCharacterTable from "@/views/run/components/character-table/useCharacterTable.ts";
+import OtherOperations from "../other-operations/OtherOperations.vue";
 
 const {
   characterTables,
@@ -75,8 +76,7 @@ const {
   start,
   unbind,
   stop,
-  resume,
-  screenshot
+  resume
 } = useCharacterTable()
 
 </script>

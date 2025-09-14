@@ -32,7 +32,12 @@ export interface TaskConfigStateInterface {
     autoEatEggCount: number,
     autoBuyTool: boolean,
     collectionArticles: string,
-    customCoordinatesTags: string[]
+    customCoordinatesTags: string[],
+    swordFightInitiativeExit: boolean,
+    swordFightCount: number
+    merchantLakeCount: number,
+    merchantLakeWordShout: string
+
 }
 
 export const useTaskConfig = defineStore('taskConfigStore', {
@@ -60,7 +65,11 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         autoEatEggCount: 1,
         autoBuyTool: false,
         collectionArticles: '',
-        customCoordinatesTags: []
+        customCoordinatesTags: [],
+        swordFightInitiativeExit: false,
+        swordFightCount: 1,
+        merchantLakeCount: 1,
+        merchantLakeWordShout: ''
 
     }),
     getters: {
@@ -89,7 +98,11 @@ export const useTaskConfig = defineStore('taskConfigStore', {
                 autoEatEggCount: state.autoEatEggCount,
                 autoBuyTool: state.autoBuyTool,
                 collectionArticles: state.collectionArticles,
-                customCoordinatesTags: state.customCoordinatesTags
+                customCoordinatesTags: state.customCoordinatesTags,
+                swordFightInitiativeExit: state.swordFightInitiativeExit,
+                swordFightCount: state.swordFightCount,
+                merchantLakeCount: state.merchantLakeCount,
+                merchantLakeWordShout: state.merchantLakeWordShout
             }
         }
     },
@@ -119,6 +132,10 @@ export const useTaskConfig = defineStore('taskConfigStore', {
             this.autoBuyTool = dict.autoBuyTool
             this.collectionArticles = dict.collectionArticles
             this.customCoordinatesTags = dict.customCoordinatesTags
+            this.swordFightInitiativeExit = dict.swordFightInitiativeExit
+            this.swordFightCount = dict.swordFightCount
+            this.merchantLakeCount = dict.merchantLakeCount
+            this.merchantLakeWordShout = dict.merchantLakeWordShout
         },
         async addExecuteList(task: executeList, index: number) {
             const isDuplicate = this.executeList.some(item => {
