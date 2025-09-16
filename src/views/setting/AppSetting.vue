@@ -6,7 +6,7 @@
  * @LastEditTime: 2025/8/25 18:09
 -->
 <template>
-  <el-card class="w-100%" shadow="hover">
+  <el-card class="w-100% m-b" shadow="hover">
     <el-row
         class="m-b"
         v-for="(list, row) in [['技能1', '技能2', '技能3', '技能4'], ['技能5', '技能6', '技能7', '技能7']]"

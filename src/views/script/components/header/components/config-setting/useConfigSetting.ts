@@ -19,18 +19,17 @@ export default function () {
 
     const deleteDialogVisible = ref(false)
 
-    const configurationList = ref([])
+    const configurationList = ref<string[]>([])
 
     /**
      * 获取配置列表
      *
      * 该函数通过pywebview API调用后端接口获取配置列表数据，
      * 并将返回结果赋值给configurationList响应式变量
-     *
-     * @returns {Promise<void>} 无返回值的异步函数
      */
     const getConfigurationList = async () => {
-        configurationList.value = await window.pywebview?.api.emit('API:TASK:CONFIG:LIST')
+        const data = await window.pywebview?.api.emit('API:TASK:CONFIG:LIST')
+        configurationList.value = ['默认配置'].concat(data || [])
     }
 
     /**

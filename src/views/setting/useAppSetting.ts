@@ -7,7 +7,6 @@
  */
 import {useTaskConfig} from "@/stores/task-config.ts";
 
-
 export default function () {
     const taskConfigStore = useTaskConfig()
 

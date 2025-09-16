@@ -62,7 +62,7 @@
             <el-option label="华山灵芝" value="华山灵芝"/>
             <el-option label="风雷岛枯木" value="风雷岛枯木"/>
             <el-option label="金陵翠竹" value="金陵翠竹"/>
-            <el-option label="江南翠竹" value="江南翠竹"/>
+            <el-option label="江南枫木" value="江南枫木"/>
             <el-option label="江南榆木" value="江南榆木"/>
             <el-option label="江南松木" value="江南松木"/>
             <el-option label="江南桉木" value="江南桉木"/>

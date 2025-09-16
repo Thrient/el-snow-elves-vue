@@ -69,7 +69,7 @@ export const useTaskConfig = defineStore('taskConfigStore', {
         swordFightInitiativeExit: false,
         swordFightCount: 1,
         merchantLakeCount: 1,
-        merchantLakeWordShout: ''
+        merchantLakeWordShout: '',
 
     }),
     getters: {

@@ -76,7 +76,7 @@ const {
   start,
   unbind,
   stop,
-  resume
+  resume,
 } = useCharacterTable()
 
 </script>
